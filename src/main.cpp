@@ -7,6 +7,11 @@ BleKeyboard bleKeyboard("Naadi", "HID", 100);
 void volumeIncrement();
 void volumeDecrement();
 void playMedia();
+void liftCall();
+void hangup();
+void okGoogle();
+void playnext();
+void playPrevious();
 
 void setup()
 {
@@ -63,4 +68,24 @@ void playMedia()
   bleKeyboard.write(KEY_MEDIA_PLAY_PAUSE);
   bleKeyboard.releaseAll();
   Serial.println("Play/Pause Operation Successful");
+}
+
+void liftCall()
+{
+}
+
+void hangup()
+{
+}
+
+void okGoogle()
+{
+}
+
+void playnext()
+{
+}
+
+void playPrevious()
+{
 }
