@@ -72,6 +72,9 @@ void playMedia()
 
 void liftCall()
 {
+  // NOT YET TESTED
+  bleKeyboard.write(KEY_MEDIA_PLAY_PAUSE);
+  bleKeyboard.releaseAll();
 }
 
 void hangup()
@@ -84,8 +87,14 @@ void okGoogle()
 
 void playnext()
 {
+  bleKeyboard.write(KEY_MEDIA_NEXT_TRACK);
+  bleKeyboard.releaseAll();
+  Serial.println("Play next");
 }
 
 void playPrevious()
 {
+  bleKeyboard.write(KEY_MEDIA_PREVIOUS_TRACK);
+  bleKeyboard.releaseAll();
+  Serial.println("Play previous");
 }
