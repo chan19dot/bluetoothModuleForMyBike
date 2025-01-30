@@ -1,8 +1,13 @@
 #include <Arduino.h>
 #include <BleKeyboard.h>
+// #include <BleHIDDevice.h>
+// #include <BLEServer.h>
+// #include <BLEDevice.h>
 BleKeyboard bleKeyboard("Naadi", "HID", 100);
 
 #define LED_BUILTIN 2
+// BLEHIDDevice *hid;
+// BLECharacteristic *input;
 
 void volumeIncrement();
 void volumeDecrement();
@@ -12,6 +17,21 @@ void hangup();
 void okGoogle();
 void playnext();
 void playPrevious();
+
+// void sendConsumerReport(uint16_t cmd)
+// {
+//   uint8_t report[2];
+//   report[0] = cmd & 0xFF;
+//   report[1] = (cmd >> 8) & 0xFF;
+//   input->setValue(report, 2);
+//   input->notify();
+//   delay(100);
+
+//   report[0] = 0;
+//   report[1] = 0;
+//   input->setValue(report, 2);
+//   input->notify();
+// }
 
 void setup()
 {
@@ -28,9 +48,11 @@ void loop()
   {
     Serial.println("Ze Bluetooth is connected Successfully");
     digitalWrite(LED_BUILTIN, HIGH);
-    volumeIncrement();
+    // volumeIncrement();
+    liftCall();
     delay(5000);
-    playMedia();
+    hangup();
+    // playMedia();
   }
   else
   {
@@ -72,13 +94,18 @@ void playMedia()
 
 void liftCall()
 {
-  // NOT YET TESTED
   bleKeyboard.write(KEY_MEDIA_PLAY_PAUSE);
   bleKeyboard.releaseAll();
+  Serial.println("lift call successful");
 }
 
 void hangup()
 {
+  // bleKeyboard.write(KEY_MEDIA_STOP);
+  // bleKeyboard.releaseAll();
+  // delay(1000);
+  // sendConsumerReport(0x2F);
+  Serial.println("hang up call successful");
 }
 
 void okGoogle()
