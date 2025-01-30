@@ -7,11 +7,9 @@ BleKeyboard bleKeyboard("Naadi", "HID", 100);
 void volumeIncrement();
 void volumeDecrement();
 void playMedia();
-int myFunction(int, int);
 
 void setup()
 {
-  int result = myFunction(2, 3);
   Serial.begin(115200);
   Serial.println("Hello from the setup");
   bleKeyboard.begin();
@@ -65,9 +63,4 @@ void playMedia()
   bleKeyboard.write(KEY_MEDIA_PLAY_PAUSE);
   bleKeyboard.releaseAll();
   Serial.println("Play/Pause Operation Successful");
-}
-
-int myFunction(int x, int y)
-{
-  return x + y;
 }
